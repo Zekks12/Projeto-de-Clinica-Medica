@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listar Pacientes - Clínica Médica TonYnho</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <img src="/images/clinic_logo.png" alt="Clínica Logo" class="logo">
+        <h1>Clínica Médica TonYnho - Listar Pacientes</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="/">Início</a></li>
+            <li><a href="/inserir">Inserir Paciente</a></li>
+            <li><a href="/listar">Listar Pacientes</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <h2>Lista de Pacientes</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>CPF</th>
+                    <th>Nome Completo</th>
+                    <th>Idade</th>
+                    <th>Dia Marcado</th>
+                    <th>Hora Marcada</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% if (pacientes.length > 0) { %>
+                <% pacientes.forEach(function(paciente) { %>
+                <tr>
+                    <td><%= paciente.cpf %></td>
+                    <td><%= paciente.nome %></td>
+                    <td><%= paciente.idade %></td>
+                    <td><%= paciente.dia_marcado %></td>
+                    <td><%= paciente.hora_marcada %></td>
+                    <td>
+                        <a href="/atualizar/<%= paciente.cpf %>" class="btn btn-update">Atualizar</a>
+                        <a href="/deletar/<%= paciente.cpf %>" class="btn btn-delete">Deletar</a>
+                    </td>
+                </tr>
+                <% }); %>
+                <% } else { %>
+                <tr>
+                    <td colspan="6">Nenhum paciente encontrado.</td>
+                </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Clínica Médica TonYnho. Todos os direitos reservados.</p>
+    </footer>
+</body>
+
+</html>
